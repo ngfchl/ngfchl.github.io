@@ -52,8 +52,6 @@ export default defineUserConfig({
 
         }
     ),
-    themeComfig: {},
-
     head: [
         [
             'link', {rel: 'icon', href: '/images/logo.png'}

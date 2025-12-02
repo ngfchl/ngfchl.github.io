@@ -1,15 +1,14 @@
 ---
 title: 01. 收割机简介
-description: 
+description:
 published: true
 date: 2025-12-01T04:40:51.831Z
-tags: 
+tags: [ ]
 editor: markdown
 dateCreated: 2024-09-29T13:27:05.911Z
 ---
 
-# <img src="https://img.ptools.fun/blog/launch_image.png" width="50" />Harvest
-
+# Harvest
 
 > harvest 本义收割机，本软件与收割机有异曲同工之妙，各位可自行安装体验。
 >
@@ -20,7 +19,8 @@ dateCreated: 2024-09-29T13:27:05.911Z
 >
 > [加入群组](https://t.me/n_ptools)  [加入群聊](https://t.me/ptools_chat)
 
-收割机一直致力于让小伙伴儿们更简单的管理 PT 站点和下载器，目前已支持站点自动签到、站点数据统计、聚合搜索、RSS 订阅、下载器管理以及简单的 Docker 容器管理功能。
+收割机一直致力于让小伙伴儿们更简单的管理 PT 站点和下载器，目前已支持站点自动签到、站点数据统计、聚合搜索、RSS 订阅、下载器管理以及简单的
+Docker 容器管理功能。
 
 当前，收割机 APP 支持多平台，目前已在Win，Mac，iOS[TestFlight]，Android 以及 Web 页面上使用。
 
@@ -30,10 +30,11 @@ dateCreated: 2024-09-29T13:27:05.911Z
 
 > <font color="red">目前辅种需要映射种子文件，所有种子文件夹均需要映射至`/downloaders/文件夹下`</font>
 >
->    > <font color="yellow">此处有调整，QB 下载器和 TR 下载器均映射到 <font color="orange"> `种子文件夹上一级`</font> 一级</font>  
+> <font color="yellow">此处有调整，QB 下载器和 TR 下载器均映射到 <font color="orange"> `种子文件夹上一级`</font>一级</font>
 >
->    ><font color="red">QB：你的QB 种子文件夹所在，映射到 <font color="orange"> `种子文件夹上一级`</font>`</font>  右面是容器内文件夹：
->    ><font color="red">固定格式，必须是/downloaders/开头</font>
+>    > <font color="red">QB：你的QB 种子文件夹所在，映射到 <font color="orange"> `种子文件夹上一级`</font>`</font>
+> > 右面是容器内文件夹：
+> > <font color="red">固定格式，必须是/downloaders/开头</font>
 >
 > <font color="orange">远程下载器可以使用同步工具同步config文件夹到安装 Harvest 的设备上，实现辅种效果</font>
 
@@ -89,17 +90,17 @@ services:
 ![img_1.png](/images/收割机/简介/img_1.png)
 
 - 获取用户基本数据
-  - 上传量
-  - 下载量
-  - 做种数量
-  - 下载数量
-  - 分享率
-  - 魔力
-  - 做种积分
-  - 注册时间
+    - 上传量
+    - 下载量
+    - 做种数量
+    - 下载数量
+    - 分享率
+    - 魔力
+    - 做种积分
+    - 注册时间
 - 进阶数据
-  - 时魔
-  - 做种体积
+    - 时魔
+    - 做种体积
 
 ## 下载器管理
 
@@ -108,27 +109,28 @@ services:
 ![img_3.png](/images/收割机/简介/img_3.png)
 
 ![img_4.png](/images/收割机/简介/img_4.png)
+
 - 种子管理
 
 - 种子筛选
 
-  - 分类
-  - 状态
-  - 标签
-  - 站点
+    - 分类
+    - 状态
+    - 标签
+    - 站点
 
 - 添加种子
 
-  - 支持链接下载
+    - 支持链接下载
 
 ![img_5.png](/images/收割机/简介/img_5.png)
 
 - 下载器设置
 
-  - 基本复原官方设置界面
-  - 支持切换限速模式
-  - 支持 EMBY 播放开启下载限速
-  - 支持辅种（同时支持 IYUU 辅种、Pieces-Hash 辅种）
+    - 基本复原官方设置界面
+    - 支持切换限速模式
+    - 支持 EMBY 播放开启下载限速
+    - 支持辅种（同时支持 IYUU 辅种、Pieces-Hash 辅种）
 
 ![img_6.png](/images/收割机/简介/img_6.png)
 
@@ -136,7 +138,8 @@ services:
 
 ## 站点导入
 
-为了让 PT 管理更方便，我们开发了站点一键导入、网页自动同步等功能来自动添加站点，同时油猴脚本还支持了类似于 PTPP 推送种子的功能，同时也支持了查看当前种子的可辅种信息
+为了让 PT 管理更方便，我们开发了站点一键导入、网页自动同步等功能来自动添加站点，同时油猴脚本还支持了类似于 PTPP
+推送种子的功能，同时也支持了查看当前种子的可辅种信息
 
 ![img_8.png](/images/收割机/简介/img_8.png)
 
@@ -145,7 +148,7 @@ services:
 - CookieCloud 同步
 
 - 浏览器插件添加同步
-![img_10.png](/images/收割机/简介/img_10.png)
+  ![img_10.png](/images/收割机/简介/img_10.png)
 - 油猴插件添加同步
 
 - 手动添加站点信息
@@ -166,6 +169,7 @@ services:
 - 可直接推送到下载器
 
 ## RSS订阅
+
 ![img_16.png](/images/收割机/简介/img_16.png)
 ![img_17.png](/images/收割机/简介/img_17.png)
 ![img_18.png](/images/收割机/简介/img_18.png)
@@ -176,8 +180,6 @@ services:
 - 支持自动或手动操作订阅结果
 
 - 支持自定义订阅标签
-
-  
 
 ## 计划任务
 
