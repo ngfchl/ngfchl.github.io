@@ -19,15 +19,15 @@ dateCreated: 2024-09-29T13:51:21.271Z
 
 1. 打开EDGE商店：[Microsoft Edge 加载项](https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home?hl=zh-CN)
 
-   ![image-20230727200459117](https://img.ptools.fun/blog/image-20230727200459117.png)
+   ![img.png](/images/CookieCloud/img.png)
 
 2. 搜索`CookieCloud`
 
-   ![image-20230727200534409](https://img.ptools.fun/blog/image-20230727200534409.png)
+   ![img_1.png](/images/CookieCloud/img_1.png)
 
 3. 安装插件
 
-   ![image-20230727200654726](https://img.ptools.fun/blog/image-20230727200654726.png)
+   ![img_2.png](/images/CookieCloud/img_2.png)
 
 ## 配置CookieCloud
 
@@ -36,5 +36,5 @@ dateCreated: 2024-09-29T13:51:21.271Z
 > 3. 用户KEY与加密密码可以使用生成功能生成，
 > 4. 注意，这个KEY与密码一定要保存好，丢失了，所有Cookie需要重新上传
 
-![image-20230727200804535](https://img.ptools.fun/blog/image-20230727200804535.png)
+![img_3.png](/images/CookieCloud/img_3.png)
 

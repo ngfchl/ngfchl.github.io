@@ -14,18 +14,18 @@ dateCreated: 2024-09-29T13:58:03.720Z
 
 1. 在容器详情中进入终端机，点击新增，即可在右侧输入命令，之后从上方第三步开始
 
-![image-1668651258960](https://img.ptools.fun/blog/image-1668651258960.png)
-![image-1668651268418](https://img.ptools.fun/blog/image-1668651268418.png)
+![img_11.png](/images/common/img_11.png)
+![img_12.png](/images/common/img_12.png)
 
 ## 威联通进入终端
 
 1. 威联通进入容器界面后，点击终端机即可进入终端界面，之后也从上方第三步开始
-![image-1668651282342](https://img.ptools.fun/blog/image-1668651282342.png)
+![img_13.png](/images/common/img_13.png)
 
 
 
 ## unraid 进入终端
 
-![image-1668651301893](https://img.ptools.fun/blog/image-1668651301893.png)
+![img_14.png](/images/common/img_14.png)
 
-![image-1668651489651](https://img.ptools.fun/blog/image-1668651489651.png)
+![img_15.png](/images/common/img_15.png)

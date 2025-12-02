@@ -21,13 +21,6 @@ export default defineUserConfig({
                     ]
                 },
                 {
-                    text: 'Unraid',
-                    children: [
-                        '/Unraid/wire-guard.md',
-                        '/Unraid/wireguard-lan2lan.md',
-                    ]
-                },
-                {
                     text: '通用教程',
                     children: [
                         '/通用教程/aliyun.md',
@@ -38,7 +31,6 @@ export default defineUserConfig({
                         '/通用教程/telegram-bot.md',
                         '/通用教程/termnal.md',
                         '/通用教程/tunnel.md',
-                        '/通用教程/wxpusher.md'
                     ]
                 }
             ],
