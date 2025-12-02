@@ -6,6 +6,21 @@ export default defineUserConfig({
     bundler: viteBundler(),
     theme: defaultTheme(
         {
+            logo: '/images/logo.png',
+            navbar: [
+                {
+                    text: '首页',
+                    link: '/',
+                },
+                {
+                    text: '收割机',
+                    link: '/收割机/home.html',
+                },
+                {
+                    text: '通用教程',
+                    link: '/通用教程/index.html',
+                },
+            ],
             sidebar: [
                 {
                     text: '收割机',
@@ -37,14 +52,13 @@ export default defineUserConfig({
 
         }
     ),
-    themeComfig: {
-        // sidebar: false,
-        // nav: {
-        //     text: '收割机文档',
-        //     link: "/all.html"
-        // },
-    },
+    themeComfig: {},
 
+    head: [
+        [
+            'link', {rel: 'icon', href: '/images/logo.png'}
+        ]
+    ],
     lang: 'zh-CN',
     title: '你好，收割机！',
     description: ' 收割机文档',
