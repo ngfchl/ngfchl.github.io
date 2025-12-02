@@ -28,8 +28,7 @@ PTPP 导入与 CookieCloud 导入操作按钮均在 APP 右上角按钮，任务
 
 #### 商店安装
 
-> <font color=orange>目前插件已在Firefox插件商店、EDGE插件商店上线，在商店搜索<font color=red>`收割机助手`</font>
-> 即可，Firefox审核较快，基本上提交就审核，EDGE很慢审核需要一周左右，Chrome商店我手里的账号无法上架，必须要使用Chrome浏览器的，请选择压缩包安装</font>
+> <font color="orange">目前插件已在Firefox插件商店、EDGE插件商店上线，在商店搜索<font color="red">`收割机助手`</font>即可，Firefox审核较快，基本上提交就审核，EDGE很慢审核需要一周左右，Chrome商店我手里的账号无法上架，必须要使用Chrome浏览器的，请选择压缩包安装</font>
 
 [EDGE 商店](https://microsoftedge.microsoft.com/addons/detail/%E6%94%B6%E5%89%B2%E6%9C%BA%E5%8A%A9%E6%89%8B/mmcdpibkihoeamigemkblfbpccadbdkj)
 
@@ -117,8 +116,7 @@ PTPP 导入与 CookieCloud 导入操作按钮均在 APP 右上角按钮，任务
 7. **一键添加**：导入模式打开后此按钮才回显示，点击按钮会筛选未添加的站点列表，同时在本地的 Cookie
    信息中筛选访问过的站点，访问站点配置文件中设定的控制面板地址，打开页面后会触发站点信息同步功能，成功同步后会关闭当前页面，页面未关闭的表示同步失败，可以选择手动操作，
 
-   > <font color=orange>PS:
-   一键添加结束之后，请记得关闭导入模式，否则，你发现你访问站点的个人中心或者控制面板打开后页面自动关闭   </font>
+   > <font color="orange">PS：一键添加结束之后，请记得关闭导入模式，否则，你发现你访问站点的个人中心或者控制面板打开后页面自动关闭</font>
 
    ![img_12.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AF%BC%E5%85%A5/img_12.png)
 
