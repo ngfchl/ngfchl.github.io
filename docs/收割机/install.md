@@ -37,7 +37,7 @@ dateCreated: 2024-09-29T14:32:58.877Z
 }
 ```
 
-## <font color=orange>提示</font>
+> <font color=orange>提示</font>
 
 <font color=red>项目未占用五个端口，使用 HOST 模式时，如果遇到端口冲突，可以修改一下五个环境变量</font>
 
@@ -48,8 +48,6 @@ dateCreated: 2024-09-29T14:32:58.877Z
 - FLOWER_UI_PORT=5566 # 自动任务执行列表，使用 host 模式时如果端口冲突，请修改
 - SUPERVISOR_UI_PORT=9001 # 服务管理端口，使用 host 模式时如果端口冲突，请修改
 ```
-
-## docker-compose
 
 ```yaml
 services:
@@ -85,6 +83,7 @@ services:
     network_mode: bridge # 桥接模式，根据需要换成host模式（如：需要使用 IPV6的场景）
 ```
 
+## 创建compose项目
 1. 在 docker 文件夹下创建 harvest，在 harvest 下创建 db 文件夹
 
    ![img.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img.png)
@@ -98,11 +97,12 @@ services:
    ![img_5.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_5.png)
    ![img_6.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_6.png)
 
-3. 选择创建 docker-compose.yml
+## 配置compose脚本
+1. 选择创建 docker-compose.yml
 
    ![img_7.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_7.png)
 
-4. 复制配置文件内容，粘贴到输入框，粘贴不了的刷新下网页，修改填写你的端口，授权码，邮箱，以及网络模式，这里有两个重点：
+2. 复制配置文件内容，粘贴到输入框，粘贴不了的刷新下网页，修改填写你的端口，授权码，邮箱，以及网络模式，这里有两个重点：
 
    > <font color="orange">下载器文件夹的映射规则，</font>
    > 冒号前面是本地文件夹，
@@ -122,14 +122,14 @@ services:
    ![img_9.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_9.png)
    ![img_10.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_10.png)
 
-5. 修改完成之后就可以下一步，下一步，点击完成就会自动下载镜像，并生成容器。
+3. 修改完成之后就可以下一步，下一步，点击完成就会自动下载镜像，并生成容器。
 
    ![img_11.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_11.png)
    ![img_12.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_12.png)
    ![img_13.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_13.png)
    ![img_14.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_14.png)
-
-6. 如果这个报失败，Exit Code 1，不要急，点击关闭。exit code 0 表示成功
+## 错误处理
+1. 如果这个报失败，Exit Code 1，不要急，点击关闭。exit code 0 表示成功
 
    ![img_15.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_15.png)
 
@@ -144,7 +144,7 @@ services:
        ![img_17.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_17.png)
        ![img_18.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%AE%89%E8%A3%85/img_18.png)
 
-7. 此时你只要等几分钟，就可以访问 5173 映射出来的端口了
+2. 此时你只要等几分钟，就可以访问 5173 映射出来的端口了
 
     1. 因为默认打开了自动更新和自动测速，需要等待启动完成
 
