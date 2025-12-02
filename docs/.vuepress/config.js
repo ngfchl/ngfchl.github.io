@@ -10,7 +10,6 @@ export default defineUserConfig({
                 {
                     text: '收割机',
                     children: [
-                        '/收割机/app.md',
                         '/收割机/home.md',
                         '/收割机/install.md',
                         '/收割机/import.md',
