@@ -1,16 +1,16 @@
 ---
 title: 08. 自行适配
-description: 
+description:
 published: true
 date: 2025-12-01T04:40:48.220Z
-tags: 
+tags: [ ]
 editor: markdown
 dateCreated: 2025-04-14T08:59:18.445Z
 ---
 
 # 自行适配站点
 
-## PT站点众多，一个人难以完全收集，全部适配就成了难题，现在开放自定义配置文件功能，各位大佬可以去哔哩哔哩大学简单学习一下Xpath，就可以参照已经有的配置文件自行适配站点了
+> PT站点众多，一个人难以完全收集，全部适配就成了难题，现在开放自定义配置文件功能，各位大佬可以去哔哩哔哩大学简单学习一下Xpath，就可以参照已经有的配置文件自行适配站点了
 
 ## 适配教程
 
@@ -22,7 +22,7 @@ dateCreated: 2025-04-14T08:59:18.445Z
 
 4. 适配完成后将配置文件放入 sites 文件夹
 
-   > <font color=orange>1.  sites 文件夹中的配置文件优先级高于内置配置</font>
+   > <font color="orange">1. sites 文件夹中的配置文件优先级高于内置配置</font>
 
 5. 清除站点配置缓存或者重启容器
 
@@ -36,9 +36,9 @@ dateCreated: 2025-04-14T08:59:18.445Z
 
       > <font color=orange>如果不好找，可以使用格式化功能对文件进行格式化</font>
 
-      ![](https://img.ptools.fun/blog/image-20250903172315597.png)	
+      ![img.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img.png)
 
-      ![](https://img.ptools.fun/blog/image-20250903172346381.png)		
+      ![img_1.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_1.png)
 
 ### 前置教程
 
@@ -68,7 +68,7 @@ dateCreated: 2025-04-14T08:59:18.445Z
 ### 使用教程
 
 1. 修改文件与name字段，两者保持一致，比如文件名是：`收割机`，那么name字段也要是`收割机`
-   ![](https://img.ptools.fun/blog/1.jpg)
+   ![img_2.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_2.png)
 
    ```
    name = "收割机"
@@ -232,15 +232,15 @@ dateCreated: 2025-04-14T08:59:18.445Z
    
    ```
 
-## 获取信息的xpath调试
+## xpath调试教程
 
 1. F12打开开发者工具，选择元素选项，在内容上点一下
 
-   ![](https://img.ptools.fun/blog/1662168732654-3ee9ee55-1ecb-4597-b373-b89a802beb35.png)
+   ![img_3.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_3.png)
 
 2. ctrl+F或者command+F打开查找框
 
-   ![](https://img.ptools.fun/blog/1662168785057-dbdca513-6ab9-487b-8671-e72de472e876.png)
+   ![img_4.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_4.png)
 
 3. 把XPATH规则填入进去按回车，后面会显示当前找到了几条元素，如果是1/1，恭喜，规则可以用，如果是0就是没找到，有很多条就是有很多规则相同的元素，需要自行分析一下修改规则，上面示例中就是在种子详情页获取种子下载链接的Xpath（获取页面中的a链接的网址，指定a链接的网址中包含download.php和passkey字段）
 
@@ -248,8 +248,6 @@ dateCreated: 2025-04-14T08:59:18.445Z
 
 > <font color=red>xpath查找时，浏览器要识别tbody，代码中需要将tbody去掉</font>
 
-
->
 > <font color="orange">`/`表示从根节点开始</font>
 >
 > <font color="orange">`//`开始表示全文查找</font>
@@ -264,7 +262,7 @@ dateCreated: 2025-04-14T08:59:18.445Z
 
 ## 自行测试
 
-1. 修改容器日志等级为DEBUG，参考开启调试后台：https://ptools.fun/zh/%E6%94%B6%E5%89%B2%E6%9C%BA/common#%E8%BF%9B%E5%85%A5%E8%B0%83%E8%AF%95%E5%90%8E%E5%8F%B0
+1. 修改容器日志等级为DEBUG，参考开启调试后台：[开启调试后台](/收割机/common.html#进入调试后台)
 2. 将配置文件放入映射的sites文件夹中
 3. 清理站点配置缓存
 4. 添加站点
