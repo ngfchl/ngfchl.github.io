@@ -75,7 +75,7 @@ services:
 
 ## 签到功能
 
-​	![image-20250129194831630](https://img.ptools.fun/blog/image-20250129194831630.png)
+![img.png](/images/收割机/简介/img.png)
 
 - 自动查找支持并开启签到的站点进行签到
 - 记录当日签到状态和签到信息
@@ -86,7 +86,7 @@ services:
 
 ## 获取站点数据
 
-![image-20250129194940385](https://img.ptools.fun/blog/image-20250129194940385.png)
+![img_1.png](/images/收割机/简介/img_1.png)
 
 - 获取用户基本数据
   - 上传量
@@ -103,10 +103,11 @@ services:
 
 ## 下载器管理
 
-![image-20250129194957291](https://img.ptools.fun/blog/image-20250129194957291.png)
+![img_2.png](/images/收割机/简介/img_2.png)
 
-![image-20250129195028099](https://img.ptools.fun/blog/image-20250129195028099.png)
+![img_3.png](/images/收割机/简介/img_3.png)
 
+![img_4.png](/images/收割机/简介/img_4.png)
 - 种子管理
 
 - 种子筛选
@@ -120,7 +121,7 @@ services:
 
   - 支持链接下载
 
-  ![image-20250129195154404](https://img.ptools.fun/blog/image-20250129195154404.png)
+![img_5.png](/images/收割机/简介/img_5.png)
 
 - 下载器设置
 
@@ -129,37 +130,34 @@ services:
   - 支持 EMBY 播放开启下载限速
   - 支持辅种（同时支持 IYUU 辅种、Pieces-Hash 辅种）
 
-  ![image-20250129195101510](https://img.ptools.fun/blog/image-20250129195101510.png)
+![img_6.png](/images/收割机/简介/img_6.png)
 
-  ![image-20250129195114929](https://img.ptools.fun/blog/image-20250129195114929.png)
+![img_7.png](/images/收割机/简介/img_7.png)
 
 ## 站点导入
 
 为了让 PT 管理更方便，我们开发了站点一键导入、网页自动同步等功能来自动添加站点，同时油猴脚本还支持了类似于 PTPP 推送种子的功能，同时也支持了查看当前种子的可辅种信息
 
-![image-20250129201016424](https://img.ptools.fun/blog/image-20250129201016424.png)
-
-![image-20250129201044255](https://img.ptools.fun/blog/image-20250129201044255.png)
+![img_8.png](/images/收割机/简介/img_8.png)
 
 - PTPP 备份文件导入
 
 - CookieCloud 同步
 
+- 浏览器插件添加同步
+![img_10.png](/images/收割机/简介/img_10.png)
 - 油猴插件添加同步
 
 - 手动添加站点信息
 
-  ![image-20250129200957800](https://img.ptools.fun/blog/image-20250129200957800.png)
+![img_11.png](/images/收割机/简介/img_11.png)
 
 ## 聚合搜索
 
-![image-20250129195238124](https://img.ptools.fun/blog/image-20250129195238124.png)
-
-![image-20250129195318865](https://img.ptools.fun/blog/image-20250129195318865.png)
-
-![image-20250129195720607](https://img.ptools.fun/blog/image-20250129195720607.png)
-
-![image-20250129195743779](https://img.ptools.fun/blog/image-20250129195743779.png)
+![img_12.png](/images/收割机/简介/img_12.png)
+![img_13.png](/images/收割机/简介/img_13.png)
+![img_14.png](/images/收割机/简介/img_14.png)
+![img_15.png](/images/收割机/简介/img_15.png)
 
 - 支持 TMDB 查询
 - 支持豆瓣影视查询
@@ -168,12 +166,10 @@ services:
 - 可直接推送到下载器
 
 ## RSS订阅
-
-![image-20250129200228457](https://img.ptools.fun/blog/image-20250129200228457.png)
-
-![image-20250129200333491](https://img.ptools.fun/blog/image-20250129200333491.png)
-
-![image-20250129200242709](https://img.ptools.fun/blog/image-20250129200242709.png)
+![img_16.png](/images/收割机/简介/img_16.png)
+![img_17.png](/images/收割机/简介/img_17.png)
+![img_18.png](/images/收割机/简介/img_18.png)
+![img_19.png](/images/收割机/简介/img_19.png)
 
 - 支持 RSS 订阅功能
 
@@ -185,11 +181,11 @@ services:
 
 ## 计划任务
 
-![image-20250129195856357](https://img.ptools.fun/blog/image-20250129195856357.png)
+![img_20.png](/images/收割机/简介/img_20.png)
 
-![image-20250129195911090](https://img.ptools.fun/blog/image-20250129195911090.png)
+![img_21.png](/images/收割机/简介/img_21.png)
 
-![image-20250129195955170](https://img.ptools.fun/blog/image-20250129195955170.png)
+![img_22.png](/images/收割机/简介/img_22.png)
 
 - 使用 Cron 表达式
 
@@ -213,6 +209,5 @@ services:
 - 支持一键重建容器（使用最新镜像）
 - 支持复制一键重建命令
 
-![image-20250129201143859](https://img.ptools.fun/blog/image-20250129201143859.png)
-
-![image-20250129201200848](https://img.ptools.fun/blog/image-20250129201200848.png)
+![img_23.png](/images/收割机/简介/img_23.png)
+![img_24.png](/images/收割机/简介/img_24.png)
