@@ -1,9 +1,9 @@
 ---
 title: 07. 企业微信
-description: 
+description:
 published: true
 date: 2025-12-01T04:41:07.061Z
-tags: 
+tags: [ ]
 editor: markdown
 dateCreated: 2025-06-01T07:53:26.109Z
 ---
@@ -30,7 +30,7 @@ dateCreated: 2025-06-01T07:53:26.109Z
 
       2. [进入应用管理](https://work.weixin.qq.com/wework_admin/frame#/apps)
 
-         <img src="https://img.ptools.fun/blog/image-20250601152012204.png"  align="left" />
+         ![img.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img.png)
 
       3. [创建应用](https://work.weixin.qq.com/wework_admin/frame#/apps/createApiApp)
 
@@ -47,13 +47,13 @@ dateCreated: 2025-06-01T07:53:26.109Z
 
    1. 点击进入应用后，可以看到应用简介，在这里你可以拿到应用 ID 和 Secret，留存备用
 
-      <img src="https://img.ptools.fun/blog/image-20250601153036426.png"  align="left" />
+      ![img_1.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img_1.png)
 
       Secret 因为安全原因会发到企业微信客户端查看
 
-      <img src="https://img.ptools.fun/blog/image-20250601153110967.png"  align="left" />
+      ![img_2.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img_2.png)
 
-      <img src="https://img.ptools.fun/blog/image-20250601153138079.png"  align="left"/>
+      ![img_3.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img_3.png)
 
    2. 你需要将收割机的访问地址通过反代或者内网穿透、frp、ngfork 等处理，让收割机可以通过广域网访问
 
@@ -65,11 +65,11 @@ dateCreated: 2025-06-01T07:53:26.109Z
 
    3. 找到接收消息->配置 API 接收
 
-      <img src="https://img.ptools.fun/blog/image-20250601152705311.png"  align="left"/>
+      ![img_4.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img_4.png)
 
    4. 在新界面，填入回调地址，并随机生成 Token 与 EncodingAESKey
 
-      <img src="https://img.ptools.fun/blog/image-20250601152821728.png"  align="left"/>
+      ![img_5.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img_5.png)
 
    5. 在收割机中填入 Token 与 EncodingAESKey，这里用到了前面获取的所有信息
 
@@ -77,20 +77,20 @@ dateCreated: 2025-06-01T07:53:26.109Z
       2. 固定代理：如果没有固定公网地址，可以使用第三方提供的企业微信代理，或者自建企业微信代理，并将代理的公网地址填入到可信 IP 中
       3. 接收 ID 不懂的直接填写`@all`
 
-      <img src="https://img.ptools.fun/blog/image-20250601152936091.png" alt="image-20250601152936091"  align="left"/>
+      ![img_6.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img_6.png)
 
    6. 收割机中配置好新奇微信相关信息后，在网页中点击保存即可
 
-      <img src="https://img.ptools.fun/blog/image-20250601154042372.png" alt="image-20250601154042372"  align="left"/>
+      ![img_7.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img_7.png)
 
 ## 回调使用
 
    1. 更新菜单：第一次配置菜单，直接在企业微信 APP 中发送消息：`更新菜单`即可，后续可在菜单中选择更新菜单
 
-      <img src="https://img.ptools.fun/blog/image-20250601154506686.png"  align="left"/>
+      ![img_8.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img_8.png)
 
-      <img src="https://img.ptools.fun/blog/image-20250601154533906.png" align="left"/>
+      ![img_9.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img_9.png)
 
    2. 发送邀请：非试用用户可以邀请他人试用收割机，每个月可以邀请三个邮箱，每个邮箱只能被邀请一次，在应用中直接发送电子邮箱地址即可触发邀请
 
-​		<img src="https://img.ptools.fun/blog/image-20250601154808618.png" alt="image-20250601154808618" />	
+      ![img_10.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E4%BC%81%E5%BE%AE/img_10.png)	
