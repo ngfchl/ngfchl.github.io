@@ -18,11 +18,11 @@ dateCreated: 2024-11-22T18:27:59.675Z
 
    1. 控制面板=>用户与群组=>用户群组=>添加用户群组：docker
 
-      ![image-20241123021458465](https://img.ptools.fun/blog/image-20241123021458465.png)
+      ![img.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/ssh/img.png)
 
    2. 用户账号=>用户名=>编辑=>用户群组=>勾选 docker
 
-      ![image-20241123021533234](https://img.ptools.fun/blog/image-20241123021533234.png)
+      ![img_1.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/ssh/img_1.png)
 
    3. 保存
 
@@ -30,7 +30,7 @@ dateCreated: 2024-11-22T18:27:59.675Z
 
    1. 打开 SSH
 
-      ![image-20241123021632856](https://img.ptools.fun/blog/image-20241123021632856.png)
+      ![img_2.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/ssh/img_2.png)
 
    2. SSH 登录群晖
 
@@ -58,7 +58,7 @@ dateCreated: 2024-11-22T18:27:59.675Z
 
 1. 打开 SSH
 
-   ![image-20241123022039667](https://img.ptools.fun/blog/image-20241123022039667.png)
+   ![img_3.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/ssh/img_3.png)
 
 2. SSH登录 NAS
 
@@ -68,9 +68,7 @@ dateCreated: 2024-11-22T18:27:59.675Z
    sudo groupadd docker
    ```
 
-   
-
-   ![image-20241123022305134](https://img.ptools.fun/blog/image-20241123022305134.png)
+   ![img_4.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/ssh/img_4.png)
 
 4. 用户添加 docker 权限
 
