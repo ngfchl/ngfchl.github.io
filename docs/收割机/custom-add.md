@@ -12,6 +12,17 @@ dateCreated: 2025-04-14T08:59:18.445Z
 
 > PT站点众多，一个人难以完全收集，全部适配就成了难题，现在开放自定义配置文件功能，各位大佬可以去哔哩哔哩大学简单学习一下Xpath，就可以参照已经有的配置文件自行适配站点了
 
+> ##### 2025.12.15
+> <font color=orange>更新了搜索时多搜索路径的支持，自定义配置文件时需要配置多个地址</font>
+> ```
+> page_search = [
+>   "torrents.php?search={}", # NP站点基本都支持
+>   "search.php?search={}",   # 新站基本都支持
+>   "special.php?search={}",  # 站点自定义的特殊页面
+>   "live.php?search={}",     # 站点自定义的特殊页面
+> ] # 种子搜索页面，大括号同上
+> ```
+
 ## 适配教程
 
 1. 观察站点，注意界面风格与显示效果
@@ -111,7 +122,12 @@ dateCreated: 2025-04-14T08:59:18.445Z
    page_detail = "details.php?id={}" # 个人主页，大括号不要改，这里会自动填入站点UID
    page_download = "download.php?id={}&passkey={}" # 种子下载链接，同上
    page_user = "userdetails.php?id={}" # 个人详情页，同上
-   page_search = "torrents.php?incldead=1&search={}" # 种子搜索页面，大括号同上
+   page_search = [
+    "torrents.php?search={}", # NP站点基本都支持
+    "search.php?search={}",   # 新站基本都支持
+    "special.php?search={}",  # 站点自定义的特殊页面
+    "live.php?search={}",     # 站点自定义的特殊页面
+   ] # 种子搜索页面，大括号同上
    page_message = "messages.php" # 短消息页面
    page_hr = "myhr.php?hrtype=1&userid={}" # HR页面
    page_leeching = "getusertorrentlistajax.php?userid={}&type=leeching" # 吸血中，下载中的种子，未启用
