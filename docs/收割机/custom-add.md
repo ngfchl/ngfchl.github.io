@@ -47,9 +47,9 @@ dateCreated: 2025-04-14T08:59:18.445Z
 
       > <font color=orange>如果不好找，可以使用格式化功能对文件进行格式化</font>
 
-      ![img.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img.png)
+      ![img.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img.png)
 
-      ![img_1.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_1.png)
+      ![img_1.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_1.png)
 
 ### 前置教程
 
@@ -79,7 +79,7 @@ dateCreated: 2025-04-14T08:59:18.445Z
 ### 使用教程
 
 1. 修改文件与name字段，两者保持一致，比如文件名是：`收割机`，那么name字段也要是`收割机`
-   ![img_2.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_2.png)
+   ![img_2.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_2.png)
 
    ```
    name = "收割机"
@@ -252,11 +252,11 @@ dateCreated: 2025-04-14T08:59:18.445Z
 
 1. F12打开开发者工具，选择元素选项，在内容上点一下
 
-   ![img_3.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_3.png)
+   ![img_3.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_3.png)
 
 2. ctrl+F或者command+F打开查找框
 
-   ![img_4.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_4.png)
+   ![img_4.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E8%87%AA%E5%AE%9A%E4%B9%89/img_4.png)
 
 3. 把XPATH规则填入进去按回车，后面会显示当前找到了几条元素，如果是1/1，恭喜，规则可以用，如果是0就是没找到，有很多条就是有很多规则相同的元素，需要自行分析一下修改规则，上面示例中就是在种子详情页获取种子下载链接的Xpath（获取页面中的a链接的网址，指定a链接的网址中包含download.php和passkey字段）
 
