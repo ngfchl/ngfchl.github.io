@@ -34,6 +34,7 @@ export default defineUserConfig({
                         '/收割机/wechat.md',
                         '/收割机/custom-add.md',
                         '/收割机/custom-theme.md',
+                        '/收割机/agreement.md',
                     ]
                 },
                 {
