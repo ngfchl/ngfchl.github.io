@@ -28,8 +28,8 @@ PTPP 导入与 CookieCloud 导入操作按钮均在 APP 右上角按钮，任务
 
 #### 商店安装
 
-> <font color="orange">目前插件已在Chrome 商店/Firefox插件商店、EDGE插件商店上线，在商店搜索<font color="red">`收割机助手`</font>即可，
-> Firefox审核较快，基本上提交就审核，Chrome商店一天左右，EDGE很慢审核需要一周左右，着急使用的就使用QQ群发布的压缩包</font>
+> <font color="orange">目前插件已在Chrome 商店/Firefox插件商店、EDGE插件商店上线，在商店搜索<font color="red">`收割机助手`</font>即可，</font>
+> <font color="deeporange">Firefox审核较快，基本上提交就审核，Chrome商店一天左右，EDGE很慢审核需要一周左右，着急使用的就使用QQ群发布的压缩包</font>
 
 [Chrome 商店](https://chromewebstore.google.com/detail/%E6%94%B6%E5%89%B2%E6%9C%BA%E5%8A%A9%E6%89%8B/ejmjhdnlmpfapjbppphjhojamgjgllln?authuser=0&hl=zh-CN)  
 
@@ -37,12 +37,14 @@ PTPP 导入与 CookieCloud 导入操作按钮均在 APP 右上角按钮，任务
 
 [Firefox 商店](https://addons.mozilla.org/zh-CN/firefox/addon/%E6%94%B6%E5%89%B2%E6%9C%BA%E5%8A%A9%E6%89%8B/)
 
+
+
+#### 压缩包安装
+
 [插件压缩包下载](https://github.com/ngfchl/harvest-ext/releases)
 > Firefox下载`harvest-addon-firefox.xpi`或者`harvest-addon-firefox.zip`，
 > EDGE/Chrome下载`harvest-addon-chrome-local.zip`
 > github访问不畅的可以使用Github代理
-
-#### 压缩包安装
 
 1. 首先在微信群或者群组下载对应浏览器的插件压缩包
 
