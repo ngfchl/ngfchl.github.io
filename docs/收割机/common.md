@@ -14,7 +14,7 @@ dateCreated: 2024-09-29T14:33:37.633Z
 
 首先，要保证，要辅种的和下载的两个下载器映射的下载路径一致
 
-这是下载器的路径映射	
+这是下载器的路径映射
 
 |              | 下载器 A                     | 下载器 B                     |         |
 |--------------|---------------------------|---------------------------|---------|
@@ -41,7 +41,8 @@ dateCreated: 2024-09-29T14:33:37.633Z
 
 ## 抓不到发种数据
 
-发种是技术活，很多人都没发过种，我发过种的几个站点都适配过了，如果你发过种的站点没抓到数据，找到你的发种历史，拷贝发种历史那一块的 HTML 代码给我，你给我 html 我才能去写 Xpath，或者参考自行适配搞一下，然后给 xpath 发我
+发种是技术活，很多人都没发过种，我发过种的几个站点都适配过了，如果你发过种的站点没抓到数据，找到你的发种历史，拷贝发种历史那一块的
+HTML 代码给我，你给我 html 我才能去写 Xpath，或者参考自行适配搞一下，然后给 xpath 发我
 
 步骤如下：
 
@@ -58,22 +59,17 @@ dateCreated: 2024-09-29T14:33:37.633Z
 
    ![img_3.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_3.png)
 
-
-
-
 ## 城市无法辅种
 
 城市的 passkey 有问题，需要到种子列表页拷贝种子下载链接，然后提取 cuhash，填到 passkey 里面
 
-![img_4.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_4.png)	
+![img_4.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_4.png)
 
 在上图中左下角的小云朵上右键点击，复制链接，会得到一个如下所示的种子链接，提取 xxxx 部分，在收割机中填写到 passkey 部分保存即可
 
 ```
 https://hdcity.city/download?id=62599&cuhash={xxxxxxxxxxxxxxxxxx}
 ```
-
-
 
 ## 下载授权文件失败
 
@@ -86,9 +82,8 @@ curl -s -D - "https://repeat.ptools.fun/api/user/auth/file" --data-raw "{\"email
 curl -s -D - "https://repeat.ptools.fun/api/user/auth/file" --data-raw "{\"email\":\"100000@qq.com\",\"token\":\"eyJhbGciOiJIUzI1NiIpXVCJ9.eyJNzM5ODh9.XIu9p-CAk8x0R-LE\"}" -o encrypted_key.bin
 ```
 
-
-
 ## `Invalid scheme component`
+
 更新站点数据时报错：`Invalid scheme component`
 ![img_5.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_5.png)
 
@@ -138,7 +133,6 @@ event_map = {
 
 ![img_6.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_6.png)
 
-
 ## 日志页面
 
 收割机的 9001 端口是服务调度页面，里面可以看到各个服务的状态以及日志。
@@ -161,7 +155,9 @@ Address already in use. # 端口已被占用，常见于 Redis 服务
 
 ## 进入调试后台
 
-在 APP 端手动添加数据虽然添加了一定的验证，但是，总有那么点意外，导致数据无法加载或其他情况，又无法手动调整，故开放调试模式，打开调试模式需要添加活着修改环境变量 `LOGGER_LEVEL`为`DEBUG`，修改之后保存镜像，即可访问调试后台，如下文的 Compose 中所示，harvest 后台地址为：`http://192.168.1.1:28000`，调试后台地址为 harvest 后台地址加上`/admin`，即：`http://192.168.1.1:28000/admin`
+在 APP 端手动添加数据虽然添加了一定的验证，但是，总有那么点意外，导致数据无法加载或其他情况，又无法手动调整，故开放调试模式，打开调试模式需要添加活着修改环境变量
+`LOGGER_LEVEL`为`DEBUG`，修改之后保存镜像，即可访问调试后台，如下文的 Compose 中所示，harvest 后台地址为：
+`http://192.168.1.1:28000`，调试后台地址为 harvest 后台地址加上`/admin`，即：`http://192.168.1.1:28000/admin`
 
 > 进入调试模式需要映射8000端口或者HOST模式直接访问8000端口
 
@@ -205,12 +201,11 @@ Address already in use. # 端口已被占用，常见于 Redis 服务
    ```
 
 2. 手动添加环境变量
-   名称：`LOGGER_LEVEL`	值：`DEBUG`
+   名称：`LOGGER_LEVEL`    值：`DEBUG`
 
 ## 隐私模式进入
 
 在仪表盘页面长按，会跳出菜单，下拉可以看到隐私模式，勾选隐私模式，首页站点名称会显示为*
-
 
 ## 启动失败/授权过期
 
@@ -222,11 +217,11 @@ Address already in use. # 端口已被占用，常见于 Redis 服务
 ## 签到失败
 
 1. 部分站点有盾，目前无法签到
-   	1. 红叶
-   	2. 我堡
-   	3. 优宝
-   	4. 农场
-   	5. 猪猪
+    1. 红叶
+    2. 我堡
+    3. 优宝
+    4. 农场
+    5. 猪猪
 2. 北洋军阀站点限制，抓到自动签到会BAN，故不支持自动签到
 3. 限时签到（有可能是服务器时间设置不准确）U2、海胆均设置在上午 9 点以后才执行签到
 
@@ -246,10 +241,12 @@ Address already in use. # 端口已被占用，常见于 Redis 服务
 
 ## 默认代理设置
 
-1. 安装 Docker 时，在环境变量中设置默认代理 DEFAULT_PROXY，会在导入站点（CC、PTPP、油猴）时自动为站点添加代理，部分限制代理访问的站点不会自动添加（如 PTT，猪猪等）
+1. 安装 Docker 时，在环境变量中设置默认代理 DEFAULT_PROXY，会在导入站点（CC、PTPP、油猴）时自动为站点添加代理，部分限制代理访问的站点不会自动添加（如
+   PTT，猪猪等）
 2. 但是，如果你没有代理并且忘记删除此环境变量，又导入了站点，导致无法抓取数据和签到，有如下解决方案：
-   	方案1. 删除 DB 文件夹下的 data.sqlite3 文件，删除环境变量中的DEFAULT_PROXY，重建容器，重新导入
-   	方案2. 批量更换代理功能，在 App 右上角有个批量功能，点击打开窗口，选择代理，填入你的代理地址（`http://xxxxx.xxxxx:xxx`），点击执行即可批量替换
+   方案1. 删除 DB 文件夹下的 data.sqlite3 文件，删除环境变量中的DEFAULT_PROXY，重建容器，重新导入
+   方案2. 批量更换代理功能，在 App 右上角有个批量功能，点击打开窗口，选择代理，填入你的代理地址（`http://xxxxx.xxxxx:xxx`
+   ），点击执行即可批量替换
 
 ## 批量替换 UA
 
@@ -266,15 +263,18 @@ Address already in use. # 端口已被占用，常见于 Redis 服务
 1. 种子文件夹映射或者选择错误 => 检查映射，并确认选择了正确的种子文件夹
 2. 种子资源文件被修改过文件加名字或者路径 => 只修改资源最外部文件或者文件夹名称的，程序已做了自动修正，其余的程序方面无能为力，可以手动修正资源名称或者报告站点
 
-## 辅种结果解释 
+## 辅种结果解释
+
 ```
 本次获取辅种数据，共31条辅种数据，耗时35.23秒。当前下载器:tr下载器 本次辅种成功推送195个种子，失败84个种子，等待校验的种子数量:1，本次辅种校验种子22个。
 ```
+
 1. 可能是站点已删种 => 从 IYUU 获取的数据，站点删种并不会通知 IYUU 删除对应种子，可以反馈给 IYUU
 2. 种子链接生成出错 => 部分站点种子下载链接生成非常规 PASSKEY 方式，已有部分站点做了处理，
-   1. 海豹海豚，必须填写 AuthKey和 Passkey（可以在种子下载地址中获取对应 key）
-   2. 馒头需要在线获取，程序已自动处理
-   3. 城市的种子下载链接所用并非 PASSKEY，需要在种子列表页的种子下载链接中获取 https://hdcity.city/download?id={种子 id}&cuhash={所需 Key}
+    1. 海豹海豚，必须填写 AuthKey和 Passkey（可以在种子下载地址中获取对应 key）
+    2. 馒头需要在线获取，程序已自动处理
+    3. 城市的种子下载链接所用并非 PASSKEY，需要在种子列表页的种子下载链接中获取 https://hdcity.city/download?id={种子
+       id}&cuhash={所需 Key}
 
 ## 可以用WatchTower更新Docker吗
 
@@ -298,29 +298,35 @@ Address already in use. # 端口已被占用，常见于 Redis 服务
 
 ## APP一直报404错误
 
-![img_9.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_9.png)
-
 APP 端报 404 错误多数是服务未能正常启动导致的，这是我们可以检查 django 的服务日志
-
-![img_10.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_10.png)
-
-这是中间就会web 访问的日志信息
 
 ### 解决方案
 
->  <font color=orange>下面的解决方案任选其一</font>
+1. 访问日志页面，检查服务是否正常启动，即使所有服务都显示绿色 `running`，也请点开日志看下是否正常启动，有的错误是启动之后报的
+   > PS: `SUPERVISOR_UI_PORT` 默认为 9001，如果 HOST 模式担心冲突请自行更换
+   HOST 模式：`http://{NAS-IP}:{SUPERVISOR_UI_PORT}`
+   Bridge 模式: `http://{NAS-IP}:{SUPERVISOR_UI_PORT映射的端口}`
 
-#### 1. 如果日志中报错为Redis：LOADING Redis is loading the dataset in memory
+2. 如果日志内容中有：`Port *** Already in use`之类的字样，那就是端口被占用了，HOST 模式的请在环境变量中修改端口   
+   |服务|默认占用端口|
+   |--|--|
+   |主进程|9001|
+   |Flower|5566|
+   |redis|6379|
+   |Uvcion|8000|
+   |nginx|5173|
 
-删除 db 文件夹下的 rdb文件和appendonlydir 文件夹，然后重启 docker 或者重启 Redis 服务
+3. 如果日志中报错为Redis：LOADING Redis is loading the dataset in memory 或者 Bad...字样
 
-![img_11.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_11.png)
+    1. 删除 db 文件夹下的 rdb文件和 appendonlydir 文件夹，然后重启 docker 或者重启 Redis 服务
 
-#### 2. 实用外部Redis服务
+       ![img_11.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_11.png)
 
-1. 添加缓存相关的环境变量：`CACHE_REDIS_CONNECTION`，格式为：`redis://192.168.1.2:6379/1`【最后的 `1`应当是`0-15` 之间的任意一个数字】
-2. 添加后台任务缓存相关的环境变量：`CELERY_REDIS_CONNECTION`，格式为：`redis://192.168.1.2:6379/15`
+    2. 也可以使用外部Redis服务
+        a. 添加缓存相关的环境变量：`CACHE_REDIS_CONNECTION`，格式为：`redis://192.168.1.2:6379/1`【最后的 `1`应当是`0-15`
+           之间的任意一个数字】
+        b. 添加后台任务缓存相关的环境变量：`CELERY_REDIS_CONNECTION`，格式为：`redis://192.168.1.2:6379/15`
 
-> PS【最后的 `1`应当是`0-15` 之间的任意一个数字，两个尽量选择不同的数字】
-
-> PS2 【两个环境变量如果设置必须一起设置】
+        > PS【最后的 `1`应当是`0-15` 之间的任意一个数字，两个尽量选择不同的数字】
+   
+        > PS2 【两个环境变量如果设置必须一起设置】
