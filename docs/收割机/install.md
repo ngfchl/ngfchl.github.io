@@ -9,6 +9,9 @@ dateCreated: 2024-09-29T14:32:58.877Z
 ---
 
 # 安装教程
+
+> 鉴于原Harvest项目Docker内存占用较大，先以使用go重新实现了Docker服务端，特此更新教程
+
 #### docker-compose非常方便，目前各大NAS系统均已支持使用docker-compose的方式部署，本项目也不再提供手动创建容器的教程，太繁琐
 > 安装教程以群晖为例，但是各家均大差不差，参照群晖的配置安装即可
 >
@@ -36,6 +39,345 @@ dateCreated: 2024-09-29T14:32:58.877Z
   ]
 }
 ```
+
+# Go Harvest 使用文档
+
+本文档基于当前 Go Harvest 代码中的功能整理，适合用于部署、初始化、日常使用和故障排查，Go Harvest 会逐渐取代原来的Harvest。
+
+## 1. 项目简介
+
+Go Harvest 是 Harvest 的 GoFrame 重写版本，面向 PT 站点管理、签到、数据抓取、种子搜索、下载器管理、辅种、通知和自动化任务。
+
+当前主要功能：
+
+- WebUI 页面和 REST API。
+- SQLite / PostgreSQL 初始化。
+- 用户登录、JWT 鉴权、Swagger UI。
+- 我的站点管理、站点配置管理、站点数据抓取、签到、搜索。
+- qBittorrent / Transmission 下载器管理和种子控制。
+- 种子推送、批量推送、辅种、种子迁移。
+- 计划任务、手动任务、任务结果记录。
+- 通知推送和消息历史。
+- TMDB / 豆瓣查询。
+- 旧版数据导入、数据备份导入导出。
+- 主程序、站点配置、WebUI 更新。
+- 服务器状态、服务状态、实时日志。
+
+## 2. 推荐部署方式
+
+推荐使用 Docker 镜像运行。镜像内包含：
+
+- Go Harvest 主程序。
+- Nginx，用于对外提供 WebUI 端口。
+- Supervisor，用于管理主程序和 Nginx。
+- Redis，可在未配置外置 Redis 时由容器内部启动。
+- 内置站点配置和 WebUI 静态文件。
+
+### 2.1 SQLite 单容器部署
+
+SQLite 是最简单的部署方式，只需要一个 Go Harvest 容器。建议在项目目录下创建 `docker-compose.yml` 和 `.env`，然后通过 `.env` 管理敏感配置和端口。
+
+完整 `docker-compose.yml` 示例：
+
+```yaml
+services:
+  harvest:
+    image: newptools/go-harvest:latest
+    container_name: go-harvest
+    restart: unless-stopped
+    env_file:
+      - path: ./.env
+        required: false
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      LOGGER_LEVEL: ${LOGGER_LEVEL:-info}
+
+      # 启动授权校验必填。EMAIL 也可写成 DJANGO_SUPERUSER_EMAIL。
+      EMAIL: ${EMAIL}
+      TOKEN: ${TOKEN}
+
+      # 容器内部 Go 服务端口、Nginx WebUI 端口、Supervisor 端口。
+      GO_WEB_PORT: ${GO_WEB_PORT:-8000}
+      WEBUI_PORT: ${WEBUI_PORT:-5173}
+      SUPERVISOR_UI_PORT: ${SUPERVISOR_UI_PORT:-9001}
+
+      # 运行资源和并发设置。
+      HARVEST_MEMORY_LIMIT: ${HARVEST_MEMORY_LIMIT:-}
+      HARVEST_GOGC: ${HARVEST_GOGC:-80}
+      HARVEST_SITE_TASK_CONCURRENCY: ${HARVEST_SITE_TASK_CONCURRENCY:-5}
+      HARVEST_DOWNLOADER_TASK_CONCURRENCY: ${HARVEST_DOWNLOADER_TASK_CONCURRENCY:-2}
+      HARVEST_DOWNLOADER_STATUS_CONCURRENCY: ${HARVEST_DOWNLOADER_STATUS_CONCURRENCY:-3}
+      HARVEST_WS_STATUS_CONCURRENCY: ${HARVEST_WS_STATUS_CONCURRENCY:-3}
+      HARVEST_PUSH_DOWNLOAD_CONCURRENCY: ${HARVEST_PUSH_DOWNLOAD_CONCURRENCY:-2}
+      HARVEST_DB_LOG_RETENTION_DAYS: ${HARVEST_DB_LOG_RETENTION_DAYS:-15}
+
+      # 留空时使用容器内置 Redis；配置后使用外置 Redis。
+      CACHE_REDIS_CONNECTION: ${CACHE_REDIS_CONNECTION:-}
+      REDIS_SERVER_PORT: ${REDIS_SERVER_PORT:-6379}
+      REDIS_MAXMEMORY: ${REDIS_MAXMEMORY:-128mb}
+      REDIS_MAXMEMORY_POLICY: ${REDIS_MAXMEMORY_POLICY:-allkeys-lru}
+
+      # GitHub 资源代理，用于站点配置、WebUI、Release 更新等。
+      GIT_PROXY: ${GIT_PROXY:-https://gh-proxy.org/}
+    ports:
+      # 对外访问 WebUI / API / Swagger 都走 Nginx 端口。
+      - "${HARVEST_WEBUI_PORT:-5173}:${WEBUI_PORT:-5173}"
+      # 可选：Supervisor 管理页面。
+      - "${HARVEST_SUPERVISOR_PORT:-9001}:${SUPERVISOR_UI_PORT:-9001}"
+    volumes:
+      # 配置、SQLite 数据库、日志、媒体文件。
+      - ./db:/app/db
+      # 自定义站点配置。
+      - ./sites:/app/sites
+      # 下载目录。
+      - ./downloads:/downloads
+      # 下载器相关目录。
+      - ./downloaders:/downloaders
+      # 图标目录，供 WebUI 或接口访问站点/应用图标。
+      - ./db/icons:/icons
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:${GO_WEB_PORT:-8000}/api.json >/dev/null"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+```
+
+`.env` 示例：
+
+```env
+TZ=Asia/Shanghai
+LOGGER_LEVEL=info
+
+# 授权信息，启动时会请求远端授权接口校验。
+EMAIL=your-email@example.com
+TOKEN=your-auth-token
+
+# 对外访问端口。
+HARVEST_WEBUI_PORT=5173
+HARVEST_SUPERVISOR_PORT=9001
+
+# 容器内部端口，通常不需要修改。
+GO_WEB_PORT=8000
+WEBUI_PORT=5173
+SUPERVISOR_UI_PORT=9001
+
+# 并发和资源控制。
+HARVEST_GOGC=80
+HARVEST_SITE_TASK_CONCURRENCY=5
+HARVEST_DOWNLOADER_TASK_CONCURRENCY=2
+HARVEST_DOWNLOADER_STATUS_CONCURRENCY=3
+HARVEST_WS_STATUS_CONCURRENCY=3
+HARVEST_PUSH_DOWNLOAD_CONCURRENCY=2
+HARVEST_DB_LOG_RETENTION_DAYS=15
+
+# 缓存。留空使用容器内置 Redis。
+CACHE_REDIS_CONNECTION=
+REDIS_SERVER_PORT=6379
+REDIS_MAXMEMORY=128mb
+REDIS_MAXMEMORY_POLICY=allkeys-lru
+
+# GitHub 资源代理。
+GIT_PROXY=https://gh-proxy.org/
+```
+
+启动：
+
+```bash
+mkdir -p db/icons sites downloads downloaders
+docker compose up -d
+```
+
+Compose 会自动读取当前目录下的 `.env`。如果 `.env` 不在当前目录，可以显式指定：
+
+```bash
+docker compose --env-file /path/to/.env up -d
+```
+
+默认访问地址：
+
+- WebUI: `http://127.0.0.1:5173`
+- 初始化页面: `http://127.0.0.1:5173/setup`
+- Swagger UI: `http://127.0.0.1:5173/swagger`
+- OpenAPI JSON: `http://127.0.0.1:5173/api.json`
+- Supervisor: `http://127.0.0.1:9001`
+
+默认挂载目录：
+
+- `./db:/app/db`，配置、数据库、日志、媒体文件。
+- `./sites:/app/sites`，用户自定义站点配置。
+- `./downloads:/downloads`，下载目录。
+- `./downloaders:/downloaders`，下载器相关目录。
+- `./db/icons:/icons`，图标目录。建议放在 `db/icons` 下，便于随数据目录一起备份和迁移。
+
+SQLite 数据库初始化时固定使用：
+
+```text
+/app/db/data.sqlite3
+```
+
+### 2.2 PostgreSQL 部署
+
+如果希望使用 PostgreSQL，可以在 SQLite 单容器 Compose 基础上增加 PostgreSQL 服务。完整示例：
+
+```yaml
+services:
+  go-harvest-postgres:
+    image: postgres:17-alpine
+    container_name: go-harvest-postgres
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      POSTGRES_DB: ${POSTGRES_DB:-goharvest}
+      POSTGRES_USER: ${POSTGRES_USER:-goharvest}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-goharvest}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+      start_period: 2s
+
+  go-harvest:
+    image: newptools/go-harvest:latest
+    container_name: go-harvest
+    restart: unless-stopped
+    depends_on:
+      go-harvest-postgres:
+        condition: service_healthy
+    env_file:
+      - path: ./.env
+        required: false
+    environment:
+      TZ: ${TZ:-Asia/Shanghai}
+      LOGGER_LEVEL: ${LOGGER_LEVEL:-info}
+
+      # 启动授权校验必填。EMAIL 也可写成 DJANGO_SUPERUSER_EMAIL。
+      EMAIL: ${EMAIL}
+      TOKEN: ${TOKEN}
+
+      GO_WEB_PORT: ${GO_WEB_PORT:-8000}
+      WEBUI_PORT: ${WEBUI_PORT:-5173}
+      SUPERVISOR_UI_PORT: ${SUPERVISOR_UI_PORT:-9001}
+
+      HARVEST_MEMORY_LIMIT: ${HARVEST_MEMORY_LIMIT:-}
+      HARVEST_GOGC: ${HARVEST_GOGC:-80}
+      HARVEST_SITE_TASK_CONCURRENCY: ${HARVEST_SITE_TASK_CONCURRENCY:-5}
+      HARVEST_DOWNLOADER_TASK_CONCURRENCY: ${HARVEST_DOWNLOADER_TASK_CONCURRENCY:-2}
+      HARVEST_DOWNLOADER_STATUS_CONCURRENCY: ${HARVEST_DOWNLOADER_STATUS_CONCURRENCY:-3}
+      HARVEST_WS_STATUS_CONCURRENCY: ${HARVEST_WS_STATUS_CONCURRENCY:-3}
+      HARVEST_PUSH_DOWNLOAD_CONCURRENCY: ${HARVEST_PUSH_DOWNLOAD_CONCURRENCY:-2}
+      HARVEST_DB_LOG_RETENTION_DAYS: ${HARVEST_DB_LOG_RETENTION_DAYS:-15}
+
+      CACHE_REDIS_CONNECTION: ${CACHE_REDIS_CONNECTION:-}
+      REDIS_SERVER_PORT: ${REDIS_SERVER_PORT:-6379}
+      REDIS_MAXMEMORY: ${REDIS_MAXMEMORY:-128mb}
+      REDIS_MAXMEMORY_POLICY: ${REDIS_MAXMEMORY_POLICY:-allkeys-lru}
+      GIT_PROXY: ${GIT_PROXY:-https://gh-proxy.org/}
+    ports:
+      - "${HARVEST_WEBUI_PORT:-5173}:${WEBUI_PORT:-5173}"
+      - "${HARVEST_SUPERVISOR_PORT:-9001}:${SUPERVISOR_UI_PORT:-9001}"
+    volumes:
+      - ./db:/app/db
+      - ./sites:/app/sites
+      - ./downloads:/downloads
+      - ./downloaders:/downloaders
+      - ./db/icons:/icons
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:${GO_WEB_PORT:-8000}/api.json >/dev/null"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+```
+
+PostgreSQL `.env` 示例可在 SQLite `.env` 基础上追加：
+
+```env
+POSTGRES_DB=goharvest
+POSTGRES_USER=goharvest
+POSTGRES_PASSWORD=change-me
+POSTGRES_PORT=5432
+```
+
+启动：
+
+```bash
+mkdir -p db/icons sites downloads downloaders postgres-data
+docker compose -f docker-compose.pgsql.yml up -d
+```
+
+如果使用自定义 `.env` 路径：
+
+```bash
+docker compose --env-file /path/to/.env -f docker-compose.pgsql.yml up -d
+```
+
+默认 PostgreSQL 环境变量：
+
+```env
+POSTGRES_DB=goharvest
+POSTGRES_USER=goharvest
+POSTGRES_PASSWORD=goharvest
+POSTGRES_PORT=5432
+```
+
+初始化页面中选择 PostgreSQL，并填写数据库地址、端口、库名、用户和密码。
+
+使用上面的 Compose 时，初始化页面中 PostgreSQL 连接信息通常填写：
+
+```text
+Host: go-harvest-postgres
+Port: 5432
+Database: goharvest
+User: goharvest
+Password: .env 中的 POSTGRES_PASSWORD
+```
+
+### 2.3 常用环境变量
+
+容器启动常用环境变量：
+
+```env
+TZ=Asia/Shanghai
+LOGGER_LEVEL=info
+EMAIL=your-email@example.com
+TOKEN=your-auth-token
+GO_WEB_PORT=8000
+WEBUI_PORT=5173
+SUPERVISOR_UI_PORT=9001
+HARVEST_MEMORY_LIMIT=
+HARVEST_GOGC=80
+HARVEST_SITE_TASK_CONCURRENCY=5
+HARVEST_DOWNLOADER_TASK_CONCURRENCY=2
+HARVEST_DOWNLOADER_STATUS_CONCURRENCY=3
+HARVEST_WS_STATUS_CONCURRENCY=3
+HARVEST_PUSH_DOWNLOAD_CONCURRENCY=2
+HARVEST_DB_LOG_RETENTION_DAYS=15
+CACHE_REDIS_CONNECTION=
+REDIS_SERVER_PORT=6379
+REDIS_MAXMEMORY=128mb
+REDIS_MAXMEMORY_POLICY=allkeys-lru
+GIT_PROXY=https://gh-proxy.org/
+```
+
+说明：
+
+- `EMAIL` / `TOKEN` 是启动授权校验所需环境变量。`EMAIL` 也兼容 `DJANGO_SUPERUSER_EMAIL`。
+- `GO_WEB_PORT` 是 Go 后端监听端口，容器内部使用。
+- `WEBUI_PORT` 是 Nginx 对外 WebUI 端口，Compose 默认映射宿主机 `5173`。
+- `SUPERVISOR_UI_PORT` 是 Supervisor 管理页面端口。
+- `CACHE_REDIS_CONNECTION` 存在时使用外置 Redis，例如 `redis://192.168.1.10:6379/15`。
+- `CACHE_REDIS_CONNECTION` 留空时，容器内部 Redis 会使用 `REDIS_SERVER_PORT`。
+- `GIT_PROXY` 用于站点配置、WebUI、Release 等 GitHub 资源访问代理。
+
+
+# Python Harvest 
 
 > <font color=orange>提示</font>
 
