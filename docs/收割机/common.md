@@ -2,7 +2,7 @@
 title: 05. 常见问题
 description:
 published: true
-date: 2025-12-01T04:40:44.595Z
+date: 2026-06-13T00:00:00.000Z
 tags: [ ]
 editor: markdown
 dateCreated: 2024-09-29T14:33:37.633Z
@@ -105,10 +105,10 @@ curl -s -D - "https://repeat.ptools.fun/api/user/auth/file" --data-raw "{\"email
 
 ## Emby联动
 
-假如，你的收割机访问地址是：`http://192.168.1.2:28000`，那么，你的EMBY 联动地址就是：
+假如，你的收割机访问地址是：`http://192.168.1.2:5173`，那么，你的 Emby 联动地址就是：
 
 ```
-http://192.168.1.2:28000/api/option/emby/webhook
+http://192.168.1.2:5173/api/option/emby/webhook
 ```
 
 然后打开 Emby，进入设置，在首选项中找到通知
@@ -135,73 +135,49 @@ event_map = {
 
 ## 日志页面
 
-收割机的 9001 端口是服务调度页面，里面可以看到各个服务的状态以及日志。
+Go Harvest 日志主要通过 APP / WebUI 的「日志中心」和「日志浮窗」查看。遇到登录失败、站点刷新失败、下载器连接失败或任务异常时，优先查看服务端日志。
 
-如果你是 bridge 桥接模式部署，那就是访问 9001 映射的端口
+Docker 侧也可以直接查看容器日志：
 
-如果是 HOST 主机模式部署，就是直接访问 9001，有部分同学 9001 端口占用的，可以在环境变量中修改为其他端口，然后访问修改后的端口即可。
-
-页面的每一行代表一个服务，绿色表示服务启动了，但是并不能代表服务正常，部分异常，例如端口冲突等异常，需要进入到日志才能查看到。
-
-常见异常日志：
-
-```
-Address already in use. # 端口已被占用，常见于 Redis 服务
+```bash
+docker logs -f go-harvest
 ```
 
-最后一列打开的页面为当前服务的实时日志，页面会实时刷新，调试时可以打开这个日志页面查看
+如果容器名不是 `go-harvest`，以你的 Compose `container_name` 为准。
+
+常见异常方向：
+
+- 授权失败：检查 `EMAIL` 或 `DJANGO_SUPERUSER_EMAIL`，以及 `TOKEN`。
+- WebUI 无法访问：检查 Compose 是否映射 `5173:5173`，以及容器健康检查是否通过。
+- 端口占用：修改 Compose 左侧宿主机端口，例如 `18080:5173`。
+- PostgreSQL 连接失败：检查数据库服务健康状态、库名、用户名和密码。
 
 ![img_7.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_7.png)
 
-## 进入调试后台
+## 打开调试日志
 
-在 APP 端手动添加数据虽然添加了一定的验证，但是，总有那么点意外，导致数据无法加载或其他情况，又无法手动调整，故开放调试模式，打开调试模式需要添加活着修改环境变量
-`LOGGER_LEVEL`为`DEBUG`，修改之后保存镜像，即可访问调试后台，如下文的 Compose 中所示，harvest 后台地址为：
-`http://192.168.1.1:28000`，调试后台地址为 harvest 后台地址加上`/admin`，即：`http://192.168.1.1:28000/admin`
+需要排查站点解析、下载器连接、辅种目录、任务执行等问题时，可以临时打开调试日志。
 
-> 进入调试模式需要映射8000端口或者HOST模式直接访问8000端口
+在 Compose 的 `harvest` 服务中添加或修改环境变量：
 
-> 进入调试后台后，可以在左侧的菜单中选择出问题的项目，找到出问题的条目，手动修改或者删除即可
+```yaml
+environment:
+  LOGGER_LEVEL: "debug"
+```
 
-调试模式打开方式：
+或者在 `db/.env` 中写入：
 
-1. Docker-Compose
+```env
+LOGGER_LEVEL=debug
+```
 
-   ```yaml
-   services:
-     harvest:
-       image: newptools/harvest
-       ports:
-         - "28000:8000"
-         - "25566:5566"
-         - "29001:9001"
-         - "25174:5173"
-       volumes:
-         - ./db:/app/db # 数据保存目录
-         - ./sites:/app/sites # 自定义站点配置文件夹
-         - ./qbittorrent1:/downloaders/qbt1 #  qb下载器种子文件映射目录， 前面为本地路径，后面为容器内路径，固定格式   如不需要辅种功能，下载器可以不映射
-         - ./tr2:/downloaders/tr2  #  Tr下载器种子文件映射目录， 前面为本地路径，后面为容器内路径，固定格式   如不需要辅种功能，下载器可以不映射
-       environment:
-         - TOKEN=YOUR-TOKEN # 填写你获取到的授权码
-         - DJANGO_SUPERUSER_USERNAME=admin
-         - DJANGO_SUPERUSER_EMAIL=YOUR-EMAIL # 填写你获取授权码使用的邮箱
-         - DJANGO_SUPERUSER_PASSWORD=adminadmin
-         - "LOGGER_LEVEL=DEBUG" # <font size=6>增加此行即可打开调试模式，默认为 INFO，可选值 INFO，DEBUG，ERROR，TRACE</font>
-         - WEBUI_PORT=5173 # WEB访问端口
-         - DJANGO_WEB_PORT=8000 # Django端口
-         - REDIS_SERVER_PORT=6379 # 队列缓存服务
-         - FLOWER_UI_PORT=5566 # 自动任务执行列表
-         - SUPERVISOR_UI_PORT=9001 # 服务管理端口
-         - CloudFlareSpeedTest=true # 测速开关
-         - DEFAULT_PROXY=YOUR-PROXY # 此代理会在 CookieCLoud 同步时直接设置为同步站点的代理，已为部分不能使用代理访问的站点屏蔽，如果不打算设置代理，请删掉此项
-       restart: always
-       hostname: harvest
-       container_name: harvest
-       network_mode: bridge # 桥接模式，根据需要换成host模式（如：需要使用 IPV6的场景）
-   ```
+然后重启容器：
 
-2. 手动添加环境变量
-   名称：`LOGGER_LEVEL`    值：`DEBUG`
+```bash
+docker compose up -d
+```
+
+排查完成后建议改回 `info`，避免日志过多。
 
 ## 隐私模式进入
 
@@ -241,12 +217,11 @@ Address already in use. # 端口已被占用，常见于 Redis 服务
 
 ## 默认代理设置
 
-1. 安装 Docker 时，在环境变量中设置默认代理 DEFAULT_PROXY，会在导入站点（CC、PTPP、油猴）时自动为站点添加代理，部分限制代理访问的站点不会自动添加（如
-   PTT，猪猪等）
-2. 但是，如果你没有代理并且忘记删除此环境变量，又导入了站点，导致无法抓取数据和签到，有如下解决方案：
-   方案1. 删除 DB 文件夹下的 data.sqlite3 文件，删除环境变量中的DEFAULT_PROXY，重建容器，重新导入
-   方案2. 批量更换代理功能，在 App 右上角有个批量功能，点击打开窗口，选择代理，填入你的代理地址（`http://xxxxx.xxxxx:xxx`
-   ），点击执行即可批量替换
+站点代理建议在 APP / WebUI 中按站点配置，或使用批量替换功能统一调整。
+
+如果导入站点后因为代理配置错误导致无法抓取数据和签到，可以在 APP 右上角打开批量功能，选择代理，填入正确代理地址，例如 `http://xxxxx.xxxxx:xxx`，点击执行即可批量替换。
+
+代理地址必须带协议，例如 `http://` 或 `socks5://`。
 
 ## 批量替换 UA
 
@@ -298,35 +273,18 @@ Address already in use. # 端口已被占用，常见于 Redis 服务
 
 ## APP一直报404错误
 
-APP 端报 404 错误多数是服务未能正常启动导致的，这是我们可以检查 django 的服务日志
+APP 端报 404 错误多数是后端地址填写错误、反向代理路径错误、服务未启动或访问到了旧端口导致。Go Harvest 默认 WebUI / API 端口是 `5173`。
 
 ### 解决方案
 
-1. 访问日志页面，检查服务是否正常启动，即使所有服务都显示绿色 `running`，也请点开日志看下是否正常启动，有的错误是启动之后报的
-   > PS: `SUPERVISOR_UI_PORT` 默认为 9001，如果 HOST 模式担心冲突请自行更换
-   HOST 模式：`http://{NAS-IP}:{SUPERVISOR_UI_PORT}`
-   Bridge 模式: `http://{NAS-IP}:{SUPERVISOR_UI_PORT映射的端口}`
+1. 检查 APP 中填写的服务器地址是否为 Go Harvest 地址，例如 `http://192.168.1.2:5173`。
+2. 浏览器访问 `http://服务器IP:5173/api.json`，确认后端 OpenAPI JSON 能正常返回。
+3. 检查 Compose 是否映射了 `5173:5173`，如果改过宿主机端口，以左侧端口为准。
+4. 检查容器日志：`docker logs -f go-harvest`。
+5. 如果使用反向代理，确认代理同时转发 WebUI、API、WebSocket / SSE 请求。
 
-2. 如果日志内容中有：`Port *** Already in use`之类的字样，那就是端口被占用了，HOST 模式的请在环境变量中修改端口   
-   |服务|默认占用端口|
-   |--|--|
-   |主进程|9001|
-   |Flower|5566|
-   |redis|6379|
-   |Uvcion|8000|
-   |nginx|5173|
+如果日志中出现 Redis 相关异常，可以配置外置 Redis：
 
-3. 如果日志中报错为Redis：LOADING Redis is loading the dataset in memory 或者 Bad...字样
-
-    1. 删除 db 文件夹下的 rdb文件和 appendonlydir 文件夹，然后重启 docker 或者重启 Redis 服务
-
-       ![img_11.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_11.png)
-
-    2. 也可以使用外部Redis服务
-        a. 添加缓存相关的环境变量：`CACHE_REDIS_CONNECTION`，格式为：`redis://192.168.1.2:6379/1`【最后的 `1`应当是`0-15`
-           之间的任意一个数字】
-        b. 添加后台任务缓存相关的环境变量：`CELERY_REDIS_CONNECTION`，格式为：`redis://192.168.1.2:6379/15`
-
-        > PS【最后的 `1`应当是`0-15` 之间的任意一个数字，两个尽量选择不同的数字】
-   
-        > PS2 【两个环境变量如果设置必须一起设置】
+```env
+CACHE_REDIS_CONNECTION=redis://192.168.1.2:6379/15
+```
