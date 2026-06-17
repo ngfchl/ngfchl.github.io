@@ -58,7 +58,7 @@ Harvest 是面向 Go Harvest / PT 收割机后端的 Flutter 客户端。它把 
 
 打开 APP 后进入登录页，依次填写：
 
-![登录界面](/images/go-harvest/初始化/登录界面.png)
+![登录界面](/images/app/初始化/登录界面.png)
 
 - 服务器地址：Harvest 后端服务地址，例如 `https://example.com`。Web 端通常会从当前页面地址自动识别，输入框不可编辑。
 - 账号：后端账号用户名。
@@ -95,11 +95,11 @@ https://harvest.example.com
 
 初始化窗口的“数据库”区域支持两种类型。
 
-![选择数据库](/images/go-harvest/初始化/选择数据库.jpg)
+![选择数据库](/images/app/初始化/选择数据库.jpg)
 
 PostgreSQL：
 
-![PostgreSQL 数据库](/images/go-harvest/初始化/pgsql数据库.jpg)
+![PostgreSQL 数据库](/images/app/初始化/pgsql数据库.jpg)
 
 - 类型：选择 `PostgreSQL`。
 - 地址：数据库主机地址，默认 `127.0.0.1`。
@@ -111,7 +111,7 @@ PostgreSQL：
 
 SQLite：
 
-![SQLite 数据库](/images/go-harvest/初始化/sqlite数据库.jpg)
+![SQLite 数据库](/images/app/初始化/sqlite数据库.jpg)
 
 - 类型：选择 `SQLite`。
 - 数据库文件：固定为 `db/data.sqlite3`，界面中不可编辑。
@@ -123,7 +123,7 @@ SQLite：
 
 初始化窗口的“管理员”区域用于创建第一个登录账号：
 
-![初始化用户](/images/go-harvest/初始化/初始化用户.jpg)
+![初始化用户](/images/app/初始化/初始化用户.jpg)
 
 - 用户名：默认 `admin`，不能为空。
 - 邮箱：可选，用于记录管理员邮箱。
@@ -163,7 +163,7 @@ JWT Secret 用于后端签发和校验登录令牌。初始化窗口会自动生
 
 当本机保存了多个登录记录时，登录页会显示“登录历史”入口。进入后可以选择历史账号快速登录。
 
-![登录历史](/images/go-harvest/初始化/登录历史.png)
+![登录历史](/images/app/初始化/登录历史.png)
 
 登录后也可以从左侧抽屉或头像菜单进入“切换账号”。切换账号会退出当前会话并进入登录历史页。
 
@@ -217,9 +217,9 @@ JWT Secret 用于后端签发和校验登录令牌。初始化窗口会自动生
 
 仪表盘用于集中查看当前账号下的关键运行数据。
 
-![仪表盘](/images/go-harvest/界面/仪表盘.png)
+![仪表盘](/images/app/界面/仪表盘.png)
 
-![桌面仪表盘](/images/go-harvest/界面/桌面仪表盘.png)
+![桌面仪表盘](/images/app/界面/桌面仪表盘.png)
 
 常见信息包括：
 
@@ -237,9 +237,9 @@ JWT Secret 用于后端签发和校验登录令牌。初始化窗口会自动生
 
 长截图会锁定在主体内容区域执行，避免把外层窗口、标题栏或无关边栏截入图片。
 
-![移动端仪表盘设置](/images/go-harvest/界面/移动端仪表盘设置.png)
+![移动端仪表盘设置](/images/app/界面/移动端仪表盘设置.png)
 
-![移动端仪表盘长图](/images/go-harvest/界面/移动端仪表盘长图.png)
+![移动端仪表盘长图](/images/app/界面/移动端仪表盘长图.png)
 
 ## 4. 站点管理
 
@@ -249,7 +249,7 @@ JWT Secret 用于后端签发和校验登录令牌。初始化窗口会自动生
 
 页面顶部提供搜索框和筛选入口，可按站点名称、状态、排序字段等条件筛选站点。站点卡片支持不同显示样式。
 
-![站点卡片列表](/images/go-harvest/界面/站点卡片列表.png)
+![站点卡片列表](/images/app/界面/站点卡片列表.png)
 
 如果当前没有站点，可以点击“添加站点”或“上传配置”开始配置。
 
@@ -257,7 +257,7 @@ JWT Secret 用于后端签发和校验登录令牌。初始化窗口会自动生
 
 自定义图标会优先适配 PNG、GIF、JPG/JPEG、WebP、ICO 等常见格式，失败时回退默认图标。
 
-![站点卡片样式](/images/go-harvest/界面/站点卡片样式.png)
+![站点卡片样式](/images/app/界面/站点卡片样式.png)
 
 ### 4.2 添加站点
 
@@ -287,7 +287,7 @@ JWT Secret 用于后端签发和校验登录令牌。初始化窗口会自动生
 
 从抽屉进入“站点时间轴”。该页面按站点创建时间、开放时间、邀请数量等维度展示站点列表，支持：
 
-![站点时间轴](/images/go-harvest/界面/站点时间轴.png)
+![站点时间轴](/images/app/界面/站点时间轴.png)
 
 - 筛选站点范围。
 - 按邀请状态筛选。
@@ -299,7 +299,7 @@ JWT Secret 用于后端签发和校验登录令牌。初始化窗口会自动生
 
 站点配置生成器可用于编辑或生成 TOML 配置模板，支持配置名称、模板字段、用户等级等内容，并可分享、下载或保存到服务器。
 
-![生成或编辑站点配置](/images/go-harvest/界面/生成-编辑站点配置.png)
+![生成或编辑站点配置](/images/app/界面/生成-编辑站点配置.png)
 
 ## 5. 下载器管理
 
@@ -309,7 +309,7 @@ JWT Secret 用于后端签发和校验登录令牌。初始化窗口会自动生
 
 页面展示所有下载器卡片，并显示实时状态：
 
-![下载器列表页](/images/go-harvest/界面/下载器列表页.png)
+![下载器列表页](/images/app/界面/下载器列表页.png)
 
 - 实时速度接收状态。
 - 启用下载器数量。
@@ -360,7 +360,7 @@ qBittorrent 和 Transmission 都提供参数设置入口。常见设置包括：
 
 从下载器进入种子列表后，可管理下载器内的种子。
 
-![种子列表页](/images/go-harvest/界面/种子列表页.png)
+![种子列表页](/images/app/界面/种子列表页.png)
 
 列表能力：
 
@@ -392,7 +392,7 @@ qBittorrent 和 Transmission 都提供参数设置入口。常见设置包括：
 
 “任务”页面用于查看和管理后端自动化任务。
 
-![计划任务列表](/images/go-harvest/界面/计划任务列表.png)
+![计划任务列表](/images/app/界面/计划任务列表.png)
 
 页面顶部显示任务启用和禁用数量，支持下拉刷新。
 
@@ -415,7 +415,7 @@ qBittorrent 和 Transmission 都提供参数设置入口。常见设置包括：
 
 任务执行记录会显示任务名称、状态、开始时间、结束时间、任务 ID 和 Markdown/JSON 详情。运行中或等待中的任务可取消，已完成的任务可删除记录，也可以清理全部执行记录。
 
-![计划任务记录](/images/go-harvest/界面/计划任务记录.png)
+![计划任务记录](/images/app/界面/计划任务记录.png)
 
 ## 8. 搜索
 
@@ -428,13 +428,13 @@ qBittorrent 和 Transmission 都提供参数设置入口。常见设置包括：
 
 输入影视名称后按回车或点击搜索。结果会展示媒体基础信息，可用于确认名称、年份、评分、简介等。
 
-![影视搜索](/images/go-harvest/界面/影视搜索.png)
+![影视搜索](/images/app/界面/影视搜索.png)
 
 ### 8.2 搜索资源
 
 切换到“搜索资源”，输入资源关键词后搜索。资源搜索依赖已配置且可搜索的站点。
 
-![影视资源搜索](/images/go-harvest/界面/影视资源搜索.png)
+![影视资源搜索](/images/app/界面/影视资源搜索.png)
 
 搜索设置支持：
 
@@ -445,9 +445,9 @@ qBittorrent 和 Transmission 都提供参数设置入口。常见设置包括：
 
 搜索结果中可选择下载器并推送种子。
 
-![影视资源搜索结果](/images/go-harvest/界面/影视资源搜索结果.png)
+![影视资源搜索结果](/images/app/界面/影视资源搜索结果.png)
 
-![影视资源推送](/images/go-harvest/界面/影视资源推送.png)
+![影视资源推送](/images/app/界面/影视资源推送.png)
 
 资源结果支持按标题、副标题、大小、做种数、发布时间排序，也支持按站点、促销、分类、分辨率、标签、季、集数、HR 和文件大小范围筛选。发布时间会解析完整时间并显示为相对间隔，悬停时显示具体时间。
 
@@ -459,9 +459,9 @@ qBittorrent 和 Transmission 都提供参数设置入口。常见设置包括：
 
 “资讯”页面提供 TMDB 和豆瓣相关内容入口。可以在顶部标签中切换数据源。
 
-![TMDB](/images/go-harvest/界面/TMDB.png)
+![TMDB](/images/app/界面/TMDB.png)
 
-![豆瓣资讯](/images/go-harvest/界面/豆瓣资讯.png)
+![豆瓣资讯](/images/app/界面/豆瓣资讯.png)
 
 如果不需要资讯页，可在设置中关闭媒体信息功能。关闭后底部导航和抽屉会隐藏资讯入口。
 
@@ -469,7 +469,7 @@ qBittorrent 和 Transmission 都提供参数设置入口。常见设置包括：
 
 顶部通知按钮进入通知历史。未读通知会在顶部栏展示，多个通知会轮播。
 
-![通知历史记录](/images/go-harvest/界面/通知历史记录.png)
+![通知历史记录](/images/app/界面/通知历史记录.png)
 
 常用操作：
 
@@ -491,7 +491,7 @@ Markdown 内容支持多行选择。顶部未读通知会在主界面 header 中
 
 从抽屉进入“设置中心”。
 
-![服务器配置](/images/go-harvest/界面/服务器配置.png)
+![服务器配置](/images/app/界面/服务器配置.png)
 
 主要设置项：
 
@@ -512,21 +512,21 @@ Markdown 内容支持多行选择。顶部未读通知会在主界面 header 中
 
 设置中心页面会保留当前配置表单状态，切换页面后再返回时不易丢失未提交的输入。药丸和蜂巢工具抓取到 token 后，可以直接写入对应站点信息，减少手动复制和粘贴。
 
-![常用工具](/images/go-harvest/界面/常用工具.png)
+![常用工具](/images/app/界面/常用工具.png)
 
-![药丸蜂巢 token 生成](/images/go-harvest/界面/药丸蜂巢token生成.png)
+![药丸蜂巢 token 生成](/images/app/界面/药丸蜂巢token生成.png)
 
 通知渠道和测试方式统一维护在 [通知配置](/收割机/notify)。
 
 数据导入导出入口用于迁移、备份和恢复数据。
 
-![数据导入导出](/images/go-harvest/界面/数据导入导出.png)
+![数据导入导出](/images/app/界面/数据导入导出.png)
 
-![外部数据导入收割机](/images/go-harvest/界面/外部数据导入收割机.png)
+![外部数据导入收割机](/images/app/界面/外部数据导入收割机.png)
 
-![导入旧版收割机数据库](/images/go-harvest/界面/导入旧版收割机数据库.png)
+![导入旧版收割机数据库](/images/app/界面/导入旧版收割机数据库.png)
 
-![旧版收割机数据接口导入](/images/go-harvest/界面/旧版收割机数据接口导入.png)
+![旧版收割机数据接口导入](/images/app/界面/旧版收割机数据接口导入.png)
 
 ## 12. 用户中心
 
@@ -542,11 +542,11 @@ Markdown 内容支持多行选择。顶部未读通知会在主界面 header 中
 
 程序更新页用于检查和更新后端程序、Web UI 和站点配置。支持查看远端更新日志和执行更新操作。
 
-![服务端更新](/images/go-harvest/界面/服务端更新.png)
+![服务端更新](/images/app/界面/服务端更新.png)
 
-![CF 测速优选](/images/go-harvest/界面/CF测速优选.png)
+![CF 测速优选](/images/app/界面/CF测速优选.png)
 
-![服务端缓存清理](/images/go-harvest/界面/服务端缓存清理.png)
+![服务端缓存清理](/images/app/界面/服务端缓存清理.png)
 
 ### 13.2 APP 升级
 
@@ -556,7 +556,7 @@ Web 端不会显示 APP 升级入口。
 
 APP 升级页支持查看最新版本、历史版本、更新日志、下载页、GitHub 加速地址测速、下载安装包、取消下载、不再提醒某版本和 TestFlight 跳转。GitHub 加速页会显示当前加速信息。
 
-![APP 更新](/images/go-harvest/界面/APP更新.png)
+![APP 更新](/images/app/界面/APP更新.png)
 
 桌面安装包选择建议：
 
@@ -573,7 +573,7 @@ macOS `.pkg` 安装到 `/Applications/harvest.app`。安装前如果检测到 `/
 
 从头像菜单点击“主题设置”，可调整：
 
-![主题设置窗口](/images/go-harvest/界面/主题设置窗口.png)
+![主题设置窗口](/images/app/界面/主题设置窗口.png)
 
 - 明暗模式。
 - 主色和基础色。
@@ -591,7 +591,7 @@ macOS `.pkg` 安装到 `/Applications/harvest.app`。安装前如果检测到 `/
 
 登录页、抽屉和头像菜单均可进入日志中心。遇到登录失败、网络异常、任务失败等问题时，可先查看日志定位原因。
 
-![日志页面](/images/go-harvest/界面/日志页面.png)
+![日志页面](/images/app/界面/日志页面.png)
 
 日志中心支持 APP 日志和服务端日志：
 
@@ -610,9 +610,9 @@ macOS `.pkg` 安装到 `/Applications/harvest.app`。安装前如果检测到 `/
 
 日志浮窗可在任意页面打开，适合边操作边排查。浮窗支持 APP/服务端日志切换、LIVE/PAUSE 跟随控制、服务端 SSE 日志流、日志级别过滤、复制、分享、清空、拖动位置和调整大小。服务端日志断开后会自动重连，连续重试三次失败后停止连接。
 
-![APP 日志浮窗](/images/go-harvest/界面/APP日志浮窗.png)
+![APP 日志浮窗](/images/app/界面/APP日志浮窗.png)
 
-![服务端日志浮窗](/images/go-harvest/界面/服务端日志浮窗.png)
+![服务端日志浮窗](/images/app/界面/服务端日志浮窗.png)
 
 ## 16. 常见问题
 

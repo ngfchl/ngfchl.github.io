@@ -1,5 +1,5 @@
 ---
-title: Django 密码错误处理
+title: 04. Django 密码错误处理
 description:
 published: true
 date: 2025-12-01T04:41:25.476Z
@@ -24,7 +24,7 @@ dateCreated: 2024-09-29T13:59:08.195Z
 
 2. 查找容器 ID：`sudo docker ps -a`
 
-   ![img.png](/images/common/img.png)
+   ![img.png](/images/password/img.png)
 
 3. 进入容器命令行：`docker exec -it 9a1c6bdafe9a /bin/bash`
 

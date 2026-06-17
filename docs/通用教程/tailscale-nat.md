@@ -1,5 +1,5 @@
 ---
-title: Tailscale 内网互访
+title: 05. Tailscale 内网互访
 description:
 published: true
 date: 2025-12-01T04:41:28.890Z
@@ -67,12 +67,12 @@ tailscale up --advertise-routes=192.168.1.0/24 --accept-routes=true
 
 1. 打开taiscale控制台，选择刚才操作的设备
 
-   ![img_2.png](/images/common/img_2.png)
+   ![img_2.png](/images/tailscale-nat/img_2.png)
 
 2. 打开路由转发，即可使用已在tailscale子网中的设备访问你配置的子网内的所有设备
 
-   ![img_1.png](/images/common/img_1.png)
+   ![img_1.png](/images/tailscale-nat/img_1.png)
 
-   ![img_3.png](/images/common/img_3.png)
+   ![img_3.png](/images/tailscale-nat/img_3.png)
 
 

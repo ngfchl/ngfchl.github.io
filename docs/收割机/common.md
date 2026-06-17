@@ -32,7 +32,7 @@ dateCreated: 2024-09-29T14:33:37.633Z
 
 然后，负责下载的，勾选刷流，保证不会对其辅种
 
-![img.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img.png)
+![img.png](/images/common/img.png)
 
 然后，辅种的下载器的种子路径选择负责下载的下载器的种子路径
 然后执行辅种任务即可
@@ -50,20 +50,20 @@ HTML 代码给我，你给我 html 我才能去写 Xpath，或者参考自行适
 
 2. 访问个人页面=> 点击发布种子
 
-   ![img_1.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_1.png)
+   ![img_1.png](/images/common/img_1.png)
 
 3. 在开发者工具=>网络，里面找到getusertorrentlistajax.php，点击，在右侧找到响应
-   ![img_2.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_2.png)
+   ![img_2.png](/images/common/img_2.png)
 
 4. 如果你懂 xpath，直接提取发种数，不懂的可以拷贝所有内容发给我处理
 
-   ![img_3.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_3.png)
+   ![img_3.png](/images/common/img_3.png)
 
 ## 城市无法辅种
 
 城市的 passkey 有问题，需要到种子列表页拷贝种子下载链接，然后提取 cuhash，填到 passkey 里面
 
-![img_4.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_4.png)
+![img_4.png](/images/common/img_4.png)
 
 在上图中左下角的小云朵上右键点击，复制链接，会得到一个如下所示的种子链接，提取 xxxx 部分，在收割机中填写到 passkey 部分保存即可
 
@@ -85,7 +85,7 @@ curl -s -D - "https://repeat.ptools.fun/api/user/auth/file" --data-raw "{\"email
 ## `Invalid scheme component`
 
 更新站点数据时报错：`Invalid scheme component`
-![img_5.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_5.png)
+![img_5.png](/images/common/img_5.png)
 
 这种一般都是代理地址不完整导致的，代理地址必须带上协议，也就是scheme： `http://`或者 `socks5://`
 
@@ -131,7 +131,7 @@ event_map = {
 
 添加通知=> WebHooks通知：
 
-![img_6.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_6.png)
+![img_6.png](/images/common/img_6.png)
 
 ## 日志页面
 
@@ -152,7 +152,7 @@ docker logs -f go-harvest
 - 端口占用：修改 Compose 左侧宿主机端口，例如 `18080:5173`。
 - PostgreSQL 连接失败：检查数据库服务健康状态、库名、用户名和密码。
 
-![img_7.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_7.png)
+![img_7.png](/images/common/img_7.png)
 
 ## 打开调试日志
 
@@ -269,7 +269,7 @@ docker compose up -d
 
 这种是 docker验证auth 失败，直接在 APP 端退出重新登录即可
 
-![img_8.png](/images/%E6%94%B6%E5%89%B2%E6%9C%BA/%E5%B8%B8%E8%A7%81/img_8.png)
+![img_8.png](/images/common/img_8.png)
 
 ## APP一直报404错误
 

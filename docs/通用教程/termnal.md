@@ -1,5 +1,5 @@
 ---
-title: 各种 NAS 进入容器命令行
+title: 07. 各种 NAS 进入容器命令行
 description: 
 published: true
 date: 2025-12-01T04:41:35.589Z
@@ -14,18 +14,18 @@ dateCreated: 2024-09-29T13:58:03.720Z
 
 1. 在容器详情中进入终端机，点击新增，即可在右侧输入命令，之后从上方第三步开始
 
-![img_11.png](/images/common/img_11.png)
-![img_12.png](/images/common/img_12.png)
+![img_11.png](/images/termnal/img_11.png)
+![img_12.png](/images/termnal/img_12.png)
 
 ## 威联通进入终端
 
 1. 威联通进入容器界面后，点击终端机即可进入终端界面，之后也从上方第三步开始
-![img_13.png](/images/common/img_13.png)
+![img_13.png](/images/termnal/img_13.png)
 
 
 
 ## unraid 进入终端
 
-![img_14.png](/images/common/img_14.png)
+![img_14.png](/images/termnal/img_14.png)
 
-![img_15.png](/images/common/img_15.png)
+![img_15.png](/images/termnal/img_15.png)

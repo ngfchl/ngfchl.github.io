@@ -8,9 +8,9 @@ editor: markdown
 dateCreated: 2024-11-22T18:27:59.675Z
 ---
 
-# 收割机 APP 肿 SSH 终端的使用
+# 收割机 APP  SSH 终端的使用
 
-收割机APP 肿的 SSH 仅用于 Docker 管理，因此需要用户具有 docker 权限，部分 NAS SSH 用户是没有 docker 权限的，因此，需要自行添加：
+收割机APP 的 SSH 仅用于 Docker 管理，因此需要用户具有 docker 权限，部分 NAS SSH 用户是没有 docker 权限的，因此，需要自行添加：
 
 ## 群晖
 
@@ -18,11 +18,11 @@ dateCreated: 2024-11-22T18:27:59.675Z
 
    1. 控制面板=>用户与群组=>用户群组=>添加用户群组：docker
 
-      ![img.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/ssh/img.png)
+      ![img.png](/images/ssh/img.png)
 
    2. 用户账号=>用户名=>编辑=>用户群组=>勾选 docker
 
-      ![img_1.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/ssh/img_1.png)
+      ![img_1.png](/images/ssh/img_1.png)
 
    3. 保存
 
@@ -30,7 +30,7 @@ dateCreated: 2024-11-22T18:27:59.675Z
 
    1. 打开 SSH
 
-      ![img_2.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/ssh/img_2.png)
+      ![img_2.png](/images/ssh/img_2.png)
 
    2. SSH 登录群晖
 
@@ -58,7 +58,7 @@ dateCreated: 2024-11-22T18:27:59.675Z
 
 1. 打开 SSH
 
-   ![img_3.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/ssh/img_3.png)
+   ![img_3.png](/images/ssh/img_3.png)
 
 2. SSH登录 NAS
 
@@ -68,7 +68,7 @@ dateCreated: 2024-11-22T18:27:59.675Z
    sudo groupadd docker
    ```
 
-   ![img_4.png](../.vuepress/public/images/%E6%94%B6%E5%89%B2%E6%9C%BA/ssh/img_4.png)
+   ![img_4.png](/images/ssh/img_4.png)
 
 4. 用户添加 docker 权限
 
