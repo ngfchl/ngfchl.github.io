@@ -40,20 +40,6 @@ dateCreated: 2025-04-14T08:59:18.445Z
 
 5. 清除站点配置缓存或者重启容器
 
-6. 加入收割机助手插件
-
-   1. 将下载的插件解压缩，在根目录找到` manifest.json `，用文本编辑器（推荐：`vscode`,`sublime`,`MarsCode`等）打开，
-
-      ​	<img src="https://img.ptools.fun/blog/image-20250903172051280.png"/>	
-
-   2. 找到文件中的两个 matches ，随便找一个域名，复制，并将网址改成你适配的站点的网址，保存后重新加载插件即可
-
-      > <font color=orange>如果不好找，可以使用格式化功能对文件进行格式化</font>
-
-      ![img.png](/images/custom-add/img.png)
-
-      ![img_1.png](/images/custom-add/img_1.png)
-
 ### 前置教程
 
 导出内置站点配置文件
@@ -113,8 +99,9 @@ dateCreated: 2025-04-14T08:59:18.445Z
    pieces_repeat = true # 是否支持pieces-hash辅种
    proxy = true # 站点是否使用代理，为false是自动屏蔽代理
    alive = true # 站点存活与否
+   sign_type = NEXUS_SIGN # 签到类型，详情如下图，无此项目时，默认走NEXUS_SIGN
    ```
-
+   ![签到方法.png](/images/custom-add/%E7%AD%BE%E5%88%B0%E6%96%B9%E6%B3%95.png)
 5. 检查各个访问链接是否正确：
 
    ```
