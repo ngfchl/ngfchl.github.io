@@ -4,6 +4,9 @@ import {defineUserConfig} from 'vuepress'
 
 export default defineUserConfig({
     bundler: viteBundler(),
+    markdown: {
+        html: true,
+    },
     theme: defaultTheme(
         {
             logo: '/images/logo.png',
@@ -35,6 +38,7 @@ export default defineUserConfig({
                         '/收割机/wechat.md',
                         '/收割机/custom-add.md',
                         '/收割机/custom-theme.md',
+                        '/收割机/compose.md',
                         '/收割机/agreement.md',
                     ]
                 },

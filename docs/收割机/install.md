@@ -8,6 +8,12 @@ editor: markdown
 dateCreated: 2024-09-29T14:32:58.877Z
 ---
 
+<div style="margin: 20px 0; padding: 16px 20px; background: #f0f9ff; border: 1px solid #b3d8ff; border-radius: 8px; text-align: center;">
+<div style="font-size: 16px; font-weight: 600; color: #303133; margin-bottom: 4px;">🔧 快速生成 docker-compose.yml</div>
+<div style="font-size: 13px; color: #909399; margin-bottom: 12px;">填写表单，自动生成适配你环境的配置文件</div>
+<a href="/收割机/compose.html" style="display: inline-block; padding: 8px 24px; background: #409eff; color: #fff; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500;">前往生成器 →</a>
+</div>
+
 # 安装教程
 
 > 鉴于原Harvest项目Docker内存占用较大，先以使用go重新实现了Docker服务端，特此更新教程
